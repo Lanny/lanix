@@ -348,6 +348,7 @@ in {
     enable = true;
     plugins = [
       pkgs.vimPlugins.vim-sensible
+      pkgs.vimPlugins.vim-pencil
     ];
     settings = {
       background = "dark";
