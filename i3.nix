@@ -34,8 +34,6 @@ let
     done
 
     cmd=$(echo -e "$cmdlist" | ${pkgs.rofi}/bin/rofi -dmenu)
-    echo $cmd > ~/foobar
-    echo ${"$"}{commands[$cmd]} >> ~/foobar
     eval ${"$"}{commands[$cmd]}
   '';
 in {
