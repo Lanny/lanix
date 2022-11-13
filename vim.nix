@@ -362,7 +362,7 @@ in {
       let g:char_ruler = 80
       let &t_ut=""
 
-      set clipboard^=unnamed
+      set clipboard=unnamedplus
 
       " Default tabbing behavior
       set expandtab
