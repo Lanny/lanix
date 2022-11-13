@@ -41,6 +41,8 @@ let
 in {
   xsession.windowManager.i3 = {
     enable = true;
+    package = pkgs.i3-gaps;
+
     config = {
       modifier = "${mod}";
 
@@ -75,11 +77,43 @@ in {
           "h" = "focus left";
         };
       };
+
+      bars = [
+        {
+          position = "top";
+          statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-top.toml";
+        }
+      ];
     };
 
     extraConfig = ''
       default_border pixel 1
       hide_edge_borders both
     '';
+  };
+
+  programs.i3status-rust = {
+    enable = true;
+    bars = {
+      top = {
+        blocks = [
+         {
+           block = "net";
+           device = "wlp3s0";
+           interval = 60;
+
+         }
+         {
+           block = "battery";
+           interval = 60;
+         }
+         {
+           block = "time";
+           interval = 60;
+           format = "%a %d/%m %k:%M %p";
+         }
+       ];
+      };
+    };
   };
 }
