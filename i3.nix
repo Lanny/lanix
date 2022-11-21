@@ -20,6 +20,7 @@ let
         ;;
     esac
   '';
+  wifistatus = import ./wifistatus;
   appLauncher = pkgs.writeShellScriptBin "app-launcher" ''
     declare -A commands
     commands=(
@@ -87,6 +88,10 @@ in {
     extraConfig = ''
       default_border pixel 1
       hide_edge_borders both
+      gaps inner 3
+      client.focused #008E54 #008E54 #008E54 #008E54 #008E54
+      client.unfocused #003E54 #003E54 #003E54 #003E54 #003E54
+      client.focused_inactive #003E54 #003E54 #003E54 #003E54 #003E54
     '';
   };
 
@@ -96,8 +101,8 @@ in {
       top = {
         blocks = [
          {
-           block = "net";
-           device = "wlp3s0";
+           block = "custom";
+           command = "${wifistatus}";
            interval = 60;
 
          }
