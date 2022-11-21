@@ -29,7 +29,7 @@ in {
   };
 
   imports = [
-    ./vim.nix
+    ./vim
     ./kitty.nix
     ./zsh.nix
     ./i3.nix
