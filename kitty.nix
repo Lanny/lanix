@@ -13,12 +13,13 @@
       window_padding_width = "6.0";
       cursor = "#AA0000";
       cursor_shape = "block";
+      copy_on_select = "yes";
     };
     keybindings = {
       "f1" = "launch --stdin-source=@screen_scrollback --type=overlay vim -R \"+ normal G\" -";
       "ctrl+n" = "new_os_window_with_cwd";
       "ctrl+shift+r" = "load_config_file";
-
+      "ctrl+v" = "paste_from_clipboard";
     };
   };
 }
