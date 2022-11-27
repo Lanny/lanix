@@ -1,12 +1,12 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, withx ? true, ... }:
 {
   home.username = "lanny";
   home.homeDirectory = "/home/lanny";
 
-  home.packages = [
+  home.packages = if withx then [
     pkgs.xsel
     pkgs.xclip
-  ];
+  ] else [];
 
   home.stateVersion = "22.05";
 
@@ -17,11 +17,12 @@
 
   imports = [
     ./vim
-    ./kitty.nix
     ./zsh.nix
+  ] ++ (if withx then [
+    ./kitty.nix
     ./i3.nix
     ./qutebrowser.nix
-  ];
+  ] else []);
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
