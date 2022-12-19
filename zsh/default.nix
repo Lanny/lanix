@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
-
-{
+let
+  rc = builtins.readFile ./zshrc-extra.sh;
+in {
   programs.zsh = {
     enable = true;
     dotDir = ".config/zsh";
@@ -23,19 +24,7 @@
     };
 
     initExtra = ''
-      bindkey -v
-      autoload -z edit-command-line
-      zle -N edit-command-line
-      bindkey "^E" edit-command-line
-
-      function zle-line-init zle-keymap-select {
-          VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
-          RPS1="${"$"}{${"$"}{KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
-          zle reset-prompt
-      }
-
-      zle -N zle-line-init
-      zle -N zle-keymap-select
+      ${rc}
     '';
   };
 }

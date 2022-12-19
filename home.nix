@@ -17,7 +17,7 @@
 
   imports = [
     ./vim
-    ./zsh.nix
+    ./zsh
   ] ++ (if withx then [
     ./kitty.nix
     ./i3.nix
